@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="htttp://www.thymeleaf.org">
+<title>Welcome To Book Store</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+   <link rel="stylesheet" href="css/style.css"/>
+
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Montserrat", sans-serif
+}
+
+.w3-row-padding img {
+	margin-bottom: 12px
+}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {
+	width: 120px;
+	background: #222;
+}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {
+	margin-left: 120px;
+}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {
+	#main {
+		margin-left: 0
+	}
+}
+
+#margin {
+	margin-left: 120px;
+}
+
+#container {
+	background-color: black;
+	margin: 0px 0px;
+}
+
+#par {
+	position: absolute;
+	top: -43px;
+	left: 190px;
+	font-size: 35pt;
+	font-family: courier;
+}
+
+.search {
+	padding: 6px 15px 6px 30px;
+	margin: 3px;
+}
+
+.rounded {
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+}
+
+
+.lighter {
+	width: 95%;
+	height: 55px;
+	padding: 40px 25px;
+	background: url('./images/lighter_grey.jpg');
+}
+
+.lighter input[type=text] {
+	border: 1px solid #d0d0d0;
+	background-color: #fcfcfc;
+}
+
+#formId {
+	position: absolute;
+	top: 18px;
+	right: 5px;
+}
+input[type="file"] {
+	margin-top:5px;
+ 	width:100%;
+ 	background: #e3e3e5;
+  	border: 1px solid black;
+  	font-size: 1.6em;
+  	padding: .3em .5em;
+  	border-radius: 6px;
+}
+</style>
+<body class="w3-dark-grey">
+			<br/><br/><br/><br/>
+		<h3 align="center">Welcome to BookStore, please login or create account to continue</h3>
+				<form id="ff" autocomplete="off" enctype="multipart/form-data" th:action="@{/registration}"
+					th:object="${user}" method="post" class="form-horizontal"
+					role="form">
+					<h2 id="h2">Registration Form</h2>
+					<p id="p">		 
+						<input placeholder="First name" id="firstName" name="firstName" type="text" th:field="*{firstName}"/>
+					</p>
+					<p id="p">		 
+						<input placeholder="Last name" id="lastName" name="lastName" type="text" th:field="*{lastName}"/>
+					</p>
+					<p id="p">		 
+						<input placeholder="Username" id="username" name="username" type="text" th:field="*{username}"/>
+					</p>
+					<p id="p">		 
+						<input placeholder="Password" id="password" name="password" type="password" th:field="*{password}"/>
+					</p>
+						<input type="file" name="file"/>
+						<p id="pB">
+				<input id="butSub" type="submit" value="create"  />
+			</p>
+			<br/>
+				</form>
+				<form th:action="@{/login}" method="get">
+					<p id="pR">
+				<input id="butSub" type="submit" value="go to login page"  />
+			</p>
+		</form>
+		<span th:utext="${successMessage}"></span>
+
+</body>
+</html>

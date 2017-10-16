@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html xmlns:th="htttp://www.thymeleaf.org">
+<title>Welcome To Book Store</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Montserrat", sans-serif
+}
+
+.w3-row-padding img {
+	margin-bottom: 12px
+}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {
+	width: 120px;
+	background: #222;
+}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {
+	margin-left: 120px;
+}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {
+	#main {
+		margin-left: 0
+	}
+}
+#margin {
+	margin-left: 120px;
+}
+#container { 
+    background-color:black;
+    margin:0px 0px;
+}
+
+#formId {
+	position:absolute;
+   	top:18px;
+   	right:5px;
+
+}
+
+#buttonAdd {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 3px;
+	right: 3px;
+	bottom: 31px;
+	border-radius: 10px;
+}
+
+#par {
+	
+	position:absolute;
+    top: -43px;
+   	left: 190px;
+   	font-size: 35pt;
+	font-family: courier;
+}
+
+.search {
+	padding:6px 15px 6px 30px;
+	margin:3px;
+}
+.rounded { 
+	border-radius:15px; 
+	-moz-border-radius:15px; 
+	-webkit-border-radius:15px; 
+}
+input[type=text]{
+	color:#bcbcbc;
+}
+
+input[type=text]:focus {
+	 border: 3px solid #555;
+}
+input[type=button], input[type=button]:hover {
+	position:relative; 
+	left:-6px;
+	border:1px solid #adc5cf;
+	background: #e4f1f9; /* Old browsers */
+	background: -moz-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e4f1f9), color-stop(100%,#d5e7f3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* IE10+ */
+	background: linear-gradient(top, #e4f1f9 0%,#d5e7f3 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f1f9', endColorstr='#d5e7f3',GradientType=0 ); /* IE6-9 */
+	color:#7da2aa;
+	cursor: pointer;
+}
+
+.lighter, .light, .dark {
+	width:95%;
+	height:50px;
+	padding:40px 25px;
+}
+.dark{
+	background: url('./images/dark_grey.jpg');
+}
+.dark input[type=text]{
+	border:1px solid #2a2e31;
+	background-color:#2d3035;
+	color:#505358;
+}
+
+.lighter{
+	background: url('./images/lighter_grey.jpg');
+}
+.lighter input[type=text]{
+	border:1px solid #d0d0d0;
+	background-color:#fcfcfc;
+}
+::placeholder {
+	color: black;
+}
+
+
+#orders {
+	float:right;
+	margin-top:5px;
+	margin-right:10px;
+	max-width:300px;
+}
+
+#ordersTitle {
+	align:center;
+}
+
+#profilePic {
+	border-style: solid;
+	border-radius: 20%;
+	width: 300px;
+	height: 300px;
+	float:left;
+	margin-top: 15px;
+	margin-left:10%;
+
+}
+
+ul.userDatas li {
+
+	width: 400px;
+	height: 580px;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+	position: relative;
+	margin-right:300px;
+	margin: 3px 3px;
+	padding: 10px 5px 0px 5px;
+	*display: inline;
+	*zoom: 1;
+}
+li img {
+	position: relative;
+	margin-top: 3px;
+	border-radius: 15px;
+	width: 300px;
+	height: 200px;
+}
+li p {
+	width: 400px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#label {
+	width: 400px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color:#000000;
+	
+}
+li input[type="file"] {
+	margin-top:5px;
+ 	width:300px;
+ 	background: #e3e3e5;
+  	border: 1px solid black;
+  	font-size: 1.6em;
+  	padding: .3em .5em;
+  	border-radius: 6px;
+}
+#pB input[type="submit"] {
+  background: rgba(148, 186, 101, 0.7);
+  box-shadow: 0 3px 0 0 rgba(123, 163, 73, 0.7);
+  border-radius: 9px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 2em;
+  line-height: 1.6em;
+  margin: 0 0; 
+  width: 300px;
+  padding: .2em 0;
+  text-shadow: 0 1px #68B25B;
+}
+#pB input[type="submit"]:hover {
+  background: #94af65;
+  text-shadow: 0 1px 3px rgba(70, 93, 41, 0.7);
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    width:100%;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+.button4 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4CAF50;
+}
+
+.button4:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+<body class="w3-dark-grey">
+
+	<!-- Icon Bar (Sidebar - hidden on small screens) -->
+	<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+		<!-- Avatar image in top left corner -->
+		<img th:src="@{bookHome.png}" style="width: 100%" />
+		<a th:href="@{/index}"
+			class="w3-bar-item w3-button w3-padding-large w3-black"> <i
+			class="fa fa-home w3-xxlarge"></i>
+			<p>HOME</p>
+		</a>
+		<a th:href="@{/profile}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-user-o w3-xxlarge"></i>
+			<p>PROFILE</p>
+		</a>
+		<a th:href="@{/booksUser}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-book w3-xxlarge"></i>
+			<p>BOOKS</p>
+		</a>
+		<a th:href="@{/cart}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-shopping-basket w3-xxlarge"></i>
+			<p>CART</p>
+		</a> 
+		<a th:href="@{logout}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-power-off w3-xxlarge"></i>
+			<p>LOG OUT</p>
+		</a>
+		
+
+	</nav>
+	<div id="margin">
+	<div id="container"> 
+	<p id="par"><i> Book Store </i></p>
+	<div class="lighter">
+		<form id="formId" th:action="@{/searchUser}" method="post">
+			<i class="fa fa-search w3-large"></i>
+			<span><input type="text" class="search rounded" th:value="${value}" name="value" id="inputValue" placeholder="Search..."/></span>
+		</form>
+	</div>
+	</div>
+	
+	
+	 <div th:if="${!orders.isEmpty()}" id="orders" >
+		<h2 align="center" id="genresTitle"> Orders</h2>
+	 <table>
+	 	<tr> 
+	 		<td>
+	 		<p align="center" th:text="order"> </p>
+	 		</td>
+	 		<td>
+	 		<p align="center" th:text="status"> </p>
+	 		</td>
+	 	</tr>
+	 	<tr th:each="order: ${orders}"> 
+			<td>
+				<form  th:action="@{ordersUser}" th:object="${bookId}" method="get">
+					<input style="display: none" type="number" name="orderId" th:value="${order.getIdOrder()}" />
+					<button th:text="order + ' id ' +  ${order.getIdOrder()}" class="button button4" type="submit" th:value="${order}"></button>
+				</form>
+			</td>
+			<td>
+				<p th:text="${order.getStatus()}"> </p>
+			</td>
+	 	</tr>
+	 </table>
+	 </div>
+	 <form id="ff" th:action="@{/updateProfile}" enctype="multipart/form-data" method="post">
+	 <input style="display:none" type="number" name="userId" th:value="${user.getIdUser()}"/>
+	 <ul class="userDatas">
+			<li> 
+			<img th:src="${user.getImagePath()}" />
+				<p id="label" th:text="name"></p>
+				<p th:text="${user.getFirstName() + ' ' + user.getLastName()}"></p>
+				<p id="label" th:text="username"></p>
+				<p th:text="${user.getUsername()}"></p>				
+				<p id="label">update profile picture</p>
+				
+				<input type="file" name="file"/>
+				<p id="pB">
+				<input id="butSub" type="submit" value="update"  />
+				</p>	
+			</li>
+		</ul>
+		</form>
+	</div>
+
+</body>
+</html>

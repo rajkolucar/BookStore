@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="htttp://www.thymeleaf.org">
+<title>Welcome To Book Store</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+   <link rel="stylesheet" href="css/style.css"/>
+
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Montserrat", sans-serif
+}
+
+.w3-row-padding img {
+	margin-bottom: 12px
+}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {
+	width: 120px;
+	background: #222;
+}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {
+	margin-left: 120px;
+}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {
+	#main {
+		margin-left: 0
+	}
+}
+
+#margin {
+	margin-left: 120px;
+}
+
+#container {
+	background-color: black;
+	margin: 0px 0px;
+}
+
+#par {
+	position: absolute;
+	top: -43px;
+	left: 190px;
+	font-size: 35pt;
+	font-family: courier;
+}
+
+.search {
+	padding: 6px 15px 6px 30px;
+	margin: 3px;
+}
+
+.rounded {
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+}
+
+
+.lighter {
+	width: 95%;
+	height: 55px;
+	padding: 40px 25px;
+	background: url('./images/lighter_grey.jpg');
+}
+
+.lighter input[type=text] {
+	border: 1px solid #d0d0d0;
+	background-color: #fcfcfc;
+}
+
+#formId {
+	position: absolute;
+	top: 18px;
+	right: 5px;
+}
+
+</style>
+<body class="w3-dark-grey">
+		<br/><br/><br/><br/>
+		<h3 align="center">Welcome to BookStore, please login or create account to continue</h3>
+		<form id="ff" th:action="@{/login}" method="post">
+			<h2 id="h2">login</h2>
+			<p id="p">		 
+				<input placeholder="username" id="username" name="username" type="text" />
+			</p>
+			<p id="p">
+				<input placeholder="password"  id="password" name="password" type="password" /> 
+			</p>
+			<p id="pB">
+				<input id="butSub" type="submit" value="login"  />
+			</p>
+			<br/>
+			
+		</form>
+		<form th:action="@{/registration}" method="get">
+			<p id="pR">
+				<input id="butSub" type="submit" value="create account"  />
+			</p>
+		</form>
+		<h5 align="center">
+		<div th:if="${param.error}">Invalid username or password.</div>
+		
+	</h5>
+</body>
+</html>

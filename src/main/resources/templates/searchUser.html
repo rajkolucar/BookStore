@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:th="htttp://www.thymeleaf.org">
+<title>Welcome To Book Store</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Montserrat", sans-serif
+}
+
+.w3-row-padding img {
+	margin-bottom: 12px
+}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {
+	width: 120px;
+	background: #222;
+}
+
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {
+	margin-left: 120px;
+}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {
+	#main {
+		margin-left: 0
+	}
+}
+
+#margin {
+	margin-left: 120px;
+}
+
+#container {
+	background-color: black;
+	margin: 0px 0px;
+}
+
+#formId {
+	position: absolute;
+	top: 18px;
+	right: 5px;
+}
+
+#par {
+	position: absolute;
+	top: -43px;
+	left: 190px;
+	font-size: 35pt;
+	font-family: courier;
+}
+
+.search {
+	padding: 6px 15px 6px 30px;
+	margin: 3px;
+}
+
+.rounded {
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+}
+
+input[type=text] {
+	color: #bcbcbc;
+}
+
+input[type=text]:focus {
+	border: 3px solid #555;
+}
+
+input[type=button], input[type=button]:hover {
+	position: relative;
+	left: -6px;
+	border: 1px solid #adc5cf;
+	background: #e4f1f9; /* Old browsers */
+	background: -moz-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%);
+	/* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e4f1f9),
+		color-stop(100%, #d5e7f3)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%);
+	/* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%);
+	/* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%);
+	/* IE10+ */
+	background: linear-gradient(top, #e4f1f9 0%, #d5e7f3 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e4f1f9',
+		endColorstr='#d5e7f3', GradientType=0); /* IE6-9 */
+	color: #7da2aa;
+	cursor: pointer;
+}
+
+.lighter, .light, .dark {
+	width: 95%;
+	height: 50px;
+	padding: 40px 25px;
+}
+
+.dark {
+	background: url('./images/dark_grey.jpg');
+}
+
+.dark input[type=text] {
+	border: 1px solid #2a2e31;
+	background-color: #2d3035;
+	color: #505358;
+}
+
+.lighter {
+	background: url('./images/lighter_grey.jpg');
+}
+
+.lighter input[type=text] {
+	border: 1px solid #d0d0d0;
+	background-color: #fcfcfc;
+}
+
+::placeholder {
+	color: black;
+}
+
+
+ul.products li {
+	width: 200px;
+	height: 280px;
+	display: inline-block;
+	vertical-align: top;
+	border-radius: 10px;
+	border-style: groove;
+	border-color: #ffffff;
+	text-align: center;
+	position: relative;
+	margin: 3px;
+	padding: 0px 5px 0px 5px;
+	*display: inline;
+	*zoom: 1;
+}
+
+li button {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 3px;
+	right: 3px;
+	bottom: 0;
+	border-radius: 10px;
+}
+
+#buttonAdd {
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 3px;
+	right: 3px;
+	bottom: 31px;
+	border-radius: 10px;
+}
+
+li img {
+	position: relative;
+	margin-top: 3px;
+	border-radius: 7px;
+	width: 90px;
+	height: 100px;
+}
+
+li p {
+	width: 191px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+</style>
+
+<body class="w3-dark-grey">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+	<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+		<!-- Avatar image in top left corner -->
+		<img th:src="@{bookHome.png}" style="width: 100%" />
+		<a th:href="@{/index}"
+			class="w3-bar-item w3-button w3-padding-large w3-black"> <i
+			class="fa fa-home w3-xxlarge"></i>
+			<p>HOME</p>
+		</a>
+		<a th:href="@{/profile}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-user-o w3-xxlarge"></i>
+			<p>PROFILE</p>
+		</a>
+		<a th:href="@{/booksUser}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-book w3-xxlarge"></i>
+			<p>BOOKS</p>
+		</a>
+		<a th:href="@{/cart}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-shopping-basket w3-xxlarge"></i>
+			<p>CART</p>
+		</a> 
+		<a th:href="@{logout}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-power-off w3-xxlarge"></i>
+			<p>LOG OUT</p>
+		</a>
+		
+
+	</nav>
+	<div id="margin">
+		<div id="container">
+			<p id="par">
+				<i> Book Store </i>
+			</p>
+			<div class="lighter">
+				<form id="formId" th:action="@{/searchUser}" method="post">
+					<i class="fa fa-search w3-large"></i> <span><input
+						type="text" class="search rounded" th:value="${value}"
+						name="value" id="inputValue" placeholder="Search..." /></span>
+				</form>
+			</div>
+		</div>
+		<h2 align="center">Search results</h2>
+		<div  class="container">
+			<ul class="products">
+
+				<li th:each="book : ${books}"><img
+					th:src="${book.getImagePath()}" />
+					<p th:text="${book.getTitle()}"></p>
+					<p th:text="${book.getAuthor()}"></p>
+					<p th:text="${book.getPrice()} + ' rsd'"></p>
+				<form th:action="@{addToCart}" method="post">
+					<input style="display: none" type="number" name="bookId"
+						th:value="${book.getIdBook()}" />
+					<button th:if="${!(book.getQuantity() &lt; 1)}" id="buttonAdd" type="submit">add to cart</button>
+				</form>
+				<form th:if="${!(book.getQuantity() &lt; 1)}" th:action="@{buyNow}" method="post">
+					<input style="display: none" type="number" name="bookId"
+						th:value="${book.getIdBook()}" />
+					
+					<button id="buttonBuy" type="submit">buy</button>
+				</form>
+				</li>
+				<!-- more list items -->
+			</ul>
+		</div>
+		</div>
+</body>
+</html>

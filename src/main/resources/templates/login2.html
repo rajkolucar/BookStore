@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>Book store</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Inconsolata" />
+</head>
+<style>
+body, html {
+	height: 100%;
+	font-family: "Inconsolata", sans-serif;
+}
+
+.bgimg {
+	background-position: center;
+	background-size: cover;
+	background-image:
+		url("/BookStore/src/main/resources/templates/src/main/webapp/books.jpg");
+	min-height: 75%;
+}
+
+.menu {
+	display: none;
+}
+</style>
+<body>
+	<br />
+	<br />
+	<br />
+	<!--   -->
+	<h2 align="center">Login</h2>
+
+	<form class="form-horizontal" th:action="@{/login}" method="post">
+		<table class="table table-bordered" align="center"
+			style="width: 500px; height: 300px;">
+			<tr>
+				<td>
+					<div class="form-group">
+						<label for="username" class="col-sm-2 control-label">Username</label>
+						<div class="col-sm-10">
+							<input type="text" id="username" name="username"
+								th:placeholder="Username" class="form-control" /> <br />
+						</div>
+					</div>
+				</td>
+
+			</tr>
+			<tr>
+				<td>
+					<div class="form-group">
+						<label for="password" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-10">
+							<input type="password" th:placeholder="Password" id="password"
+								name="password" class="form-control" /> <br />
+						</div>
+						<!-- style="width:60px;height:30px;" -->
+					</div>
+				</td>
+
+			</tr>
+			<tr>
+				<td>
+					<button class="w3-button w3-block w3-green" type="submit">login</button>
+				</td>
+			</tr>
+			
+		</table>
+	</form>
+		<form class="form-horizontal" th:action="@{/registration}" method="get">
+		<table>
+			<tr>
+				<td>
+					<button class="w3-button w3-block w3-green" type="submit">Create account</button>
+				</td>
+			</tr>
+		</table>
+		</form>
+	
+	<h5 align="center">
+		<div th:if="${param.error}">Invalid username or password.</div>
+		
+	</h5>
+</body>
+</html>

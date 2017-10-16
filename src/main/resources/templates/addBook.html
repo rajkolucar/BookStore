@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="htttp://www.thymeleaf.org">
+<title>Welcome To Book Store</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+   <link rel="stylesheet" href="css/style.css"/>
+
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Montserrat", sans-serif
+}
+
+.w3-row-padding img {
+	margin-bottom: 12px
+}
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {
+	width: 120px;
+	background: #222;
+}
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {
+	margin-left: 120px;
+}
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {
+	#main {
+		margin-left: 0
+	}
+}
+
+#margin {
+	margin-left: 120px;
+}
+
+#container {
+	background-color: black;
+	margin: 0px 0px;
+}
+
+#par {
+	position: absolute;
+	top: -43px;
+	left: 190px;
+	font-size: 35pt;
+	font-family: courier;
+}
+
+.search {
+	padding: 6px 15px 6px 30px;
+	margin: 3px;
+}
+
+.rounded {
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+}
+
+
+.lighter {
+	width: 95%;
+	height: 55px;
+	padding: 40px 25px;
+	background: url('./images/lighter_grey.jpg');
+}
+
+.lighter input[type=text] {
+	border: 1px solid #d0d0d0;
+	background-color: #fcfcfc;
+}
+
+#formId {
+	position: absolute;
+	top: 18px;
+	right: 5px;
+}
+
+</style>
+<body class="w3-dark-grey">
+
+	<!-- Icon Bar (Sidebar - hidden on small screens) -->
+	<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+		<!-- Avatar image in top left corner -->
+		<img th:src="@{bookHome.png}" style="width: 100%" />
+		<a th:href="@{/index}"
+			class="w3-bar-item w3-button w3-padding-large w3-black"> <i
+			class="fa fa-home w3-xxlarge"></i>
+			<p>HOME</p>
+		</a>
+		<a th:href="@{/usersAdmin}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-user-circle w3-xxlarge"></i>
+			<p>USERS</p>
+		</a>
+		<a th:href="@{/booksAdmin}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-book w3-xxlarge"></i>
+			<p>BOOKS</p>
+		</a>
+		<a th:href="@{/add}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-plus w3-xxlarge"></i>
+			<p>ADD BOOK</p>
+		</a>
+		<a th:href="@{/ordersAdmin}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-truck w3-xxlarge"></i>
+			<p>ORDERS</p>
+		</a> 
+		<a th:href="@{logout}"
+			class="w3-bar-item w3-button w3-padding-large w3-hover-black"> <i
+			class="fa fa-power-off w3-xxlarge"></i>
+			<p>LOG OUT</p>
+		</a>
+
+	</nav>
+	<div id="margin">
+		<div id="container">
+			<p id="par">
+				<i> Book Store </i>
+			</p>
+			<div class="lighter">
+				<form id="formId" th:action="@{/searchAdmin}" method="post">
+					<i class="fa fa-search w3-large"></i> 
+					<input type="text" class="search rounded" th:value="${value}"
+						name="value" id="inputValue" placeholder="Search..." />
+				</form>
+			</div>
+		</div>
+		<form id="ff" th:action="@{/add}" enctype="multipart/form-data" method="post">
+			<h2 id="h2">Add book</h2>
+			<p id="p">
+				 
+				<input placeholder="title" id="title" name="title" th:field="*{book.title}" type="text" />
+			</p>
+			<p id="p">
+				<input placeholder="author"  id="author" name="author" th:field="*{book.author}" type="text" /> 
+			</p>
+			<p id="p">
+				 
+				<input placeholder="genre"  id="genre" name="genre" th:field="*{book.genre}" type="text" /> 
+			</p>
+			<p id="p">
+				 
+				<input placeholder="price"  id="price" name="price" th:field="*{book.price}" type="number" required="required"/> 
+			</p>
+			<p id="p">
+				 
+				<input placeholder="quantity"  id="quantity" name="quantity" th:field="*{book.quantity}" type="number" required="required"/> 
+			</p>
+				<p id="p">
+				
+				<input  type="file" name="file" />
+			</p>
+			<p id="pB">
+				<input id="butSub" type="submit" value="Confirm"  />
+			</p>
+		</form>
+	</div>
+</body>
+</html>
